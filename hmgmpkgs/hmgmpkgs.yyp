@@ -75,7 +75,7 @@
     {"folderPath":"folders/Extensions.yy","order":14,"resourceVersion":"1.0","name":"Extensions","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Scripts/Core.yy","order":1,"resourceVersion":"1.0","name":"Core","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Scripts/Collision Test Render States.yy","order":2,"resourceVersion":"1.0","name":"Collision Test Render States","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Scripts/Collision Test Render States/Same Shape.yy","order":6,"resourceVersion":"1.0","name":"Same Shape","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Scripts/Collision Test Render States/Same Shapes.yy","order":6,"resourceVersion":"1.0","name":"Same Shapes","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Scripts/Collision Test Render States/Point In Shape.yy","order":11,"resourceVersion":"1.0","name":"Point In Shape","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Scripts/Collision Test Render States/Different Shapes.yy","order":12,"resourceVersion":"1.0","name":"Different Shapes","tags":[],"resourceType":"GMFolder",},
   ],

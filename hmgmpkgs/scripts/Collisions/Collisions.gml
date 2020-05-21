@@ -266,11 +266,6 @@ function collide_oriented_rectangles(a,b) {
 	return !separating_axis_for_oriented_rect(edge, a);
 }
 
-/// @func collide_points
-function collide_points(a,b) {
-	return vec2_equals(a,b);
-}
-
 /// @func collide_point_in_circle
 function collide_point_in_circle(x,y,circle) {
 	var cpos = circle.get_global_position();
@@ -290,7 +285,7 @@ function collide_point_in_rectangle(x,y,rectangle) {
 /// @func collide_point_in_line
 function collide_point_in_line(x,y,line) {
 	var v = new Vector2(x,y);
-	if (collide_points(line.get_global_position(), v)) return true;
+	if (vec2_equals(line.get_global_position(), v)) return true;
 	
 	var lp = vec2_subtract(v, line.get_global_position());
 	return vec2_parallel(lp, line.get_global_angle());
