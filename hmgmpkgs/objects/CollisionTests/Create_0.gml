@@ -1,0 +1,23 @@
+machine = render_state_machine_create();
+machine.add("rect-rect", new ColTest_RectRect(machine));
+machine.add("circle-circle",new ColTest_CircleCircle(machine));
+machine.add("line-line",new ColTest_LineLine(machine));
+machine.add("seg-seg",new ColTest_SegmentSegment(machine));
+machine.add("orect-orect", new ColTest_ORectORect(machine));
+machine.add("point-circle", new ColTest_PointInCircle(machine));
+machine.add("point-rect", new ColTest_PointInRect(machine));
+machine.add("point-line", new ColTest_PointInLine(machine));
+machine.add("point-seg", new ColTest_PointInSegment(machine));
+machine.add("point-orect", new ColTest_PointInORect(machine));
+machine.add("line-circle", new ColTest_LineCircle(machine));
+machine.add("line-rect", new ColTest_LineRect(machine));
+machine.add("line-seg", new ColTest_LineLineSegment(machine));
+machine.add("line-orect", new ColTest_LineORect(machine));
+machine.add("seg-circle", new ColTest_SegmentCircle(machine));
+machine.add("seg-rect", new ColTest_SegmentRect(machine));
+machine.add("seg-orect", new ColTest_SegmentORect(machine));
+machine.add("circle-rect", new ColTest_CircleRect(machine));
+machine.add("circle-orect", new ColTest_CircleORect(machine));
+machine.add("rect-orect", new ColTest_RectORect(machine));
+
+machine.change("rect-rect");

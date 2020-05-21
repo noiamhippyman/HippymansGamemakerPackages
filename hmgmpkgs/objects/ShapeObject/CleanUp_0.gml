@@ -1,0 +1,1 @@
+if (is_struct(shape)) delete shape;
