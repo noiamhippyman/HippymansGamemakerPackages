@@ -5,30 +5,30 @@ function Vector2(_x,_y) constructor {
 }
 
 /// @func vec2_add
-function vec2_add(v1,v2) {
-	return new Vector2(v1.x + v2.x, v1.y + v2.y);
+function vec2_add(a,b) {
+	return new Vector2(a.x + b.x, a.y + b.y);
 }
 
 /// @func vec2_subtract
-function vec2_subtract(v1,v2) {
-	return new Vector2(v1.x - v2.x, v1.y - v2.y);
+function vec2_subtract(a,b) {
+	return new Vector2(a.x - b.x, a.y - b.y);
 }
 
 /// @func vec2_multiply
-function vec2_multiply(v1,v2) {
-	if (is_struct(v2)) {
-		return new Vector2(v1.x * v2.x, v1.y * v2.y);
+function vec2_multiply(a,b) {
+	if (is_struct(b)) {
+		return new Vector2(a.x * b.x, a.y * b.y);
 	} else {
-		return new Vector2(v1.x * v2, v1.y * v2);
+		return new Vector2(a.x * b, a.y * b);
 	}
 }
 
 /// @func vec2_divide
-function vec2_divide(v1,v2) {
-	if (is_struct(v2)) {
-		return new Vector2(v1.x / v2.x, v1.y / v2.y);
+function vec2_divide(a,b) {
+	if (is_struct(b)) {
+		return new Vector2(a.x / b.x, a.y / b.y);
 	} else {
-		return new Vector2(v1.x / v2, v1.y / v2);
+		return new Vector2(a.x / b, a.y / b);
 	}
 }
 
@@ -37,8 +37,8 @@ function vec2_length(v) {
 	return point_distance(0,0,v.x,v.y);
 }
 
-/// @func vec2_unit
-function vec2_unit(v) {
+/// @func vec2_normalized
+function vec2_normalized(v) {
 	return vec2_divide(v,vec2_length(v));
 }
 
@@ -54,8 +54,8 @@ function vec2_rotate(v,degrees) {
 }
 
 /// @func vec2_dot_product
-function vec2_dot_product(v1,v2) {
-	return dot_product(v1.x,v1.y,v2.x,v2.y);
+function vec2_dot_product(a,b) {
+	return dot_product(a.x,a.y,b.x,b.y);
 }
 
 /// @func vec2_project
@@ -71,21 +71,21 @@ function vec2_project(v_project,v_onto) {
 }
 
 /// @func vec2_enclosed_angle
-function vec2_enclosed_angle(v1,v2) {
-	var u1 = vec2_unit(v1);
-	var u2 = vec2_unit(v2);
+function vec2_enclosed_angle(a,b) {
+	var u1 = vec2_normalized(a);
+	var u2 = vec2_normalized(b);
 	var dp = vec2_dot_product(u1,u2);
 	return radtodeg(arccos(dp));
 }
 
 /// @func vec2_equals
-function vec2_equals(v1,v2) {
-	return v1.x == v2.x and v1.y == v2.y;
+function vec2_equals(a,b) {
+	return a.x == b.x and a.y == b.y;
 }
 
 /// @func vec2_distance
-function vec2_distance(v1,v2) {
-	return point_distance(v1.x,v1.y,v2.x,v2.y);
+function vec2_distance(a,b) {
+	return point_distance(a.x,a.y,b.x,b.y);
 }
 
 /// @func vec2_rotate_90
@@ -99,9 +99,9 @@ function vec2_negate(v) {
 }
 
 /// @func vec2_parallel
-function vec2_parallel(v1,v2) {
-	var na = vec2_rotate_90(v1);
-	return vec2_dot_product(na,v2) == 0;
+function vec2_parallel(a,b) {
+	var na = vec2_rotate_90(a);
+	return vec2_dot_product(na,b) == 0;
 }
 
 /// @func vec2_sort

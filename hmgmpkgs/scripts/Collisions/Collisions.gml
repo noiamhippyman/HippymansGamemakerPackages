@@ -23,10 +23,10 @@ function on_one_side(line,line_segment) {
 
 /// @func project_segment
 function project_segment(line_segment,onto) {
-	var o_unit = vec2_unit(onto);
+	var o_normalized = vec2_normalized(onto);
 	
-	var dp1 = vec2_dot_product(o_unit,line_segment.get_global_position());
-	var dp2 = vec2_dot_product(o_unit,line_segment.get_end_global_position());
+	var dp1 = vec2_dot_product(o_normalized,line_segment.get_global_position());
+	var dp2 = vec2_dot_product(o_normalized,line_segment.get_end_global_position());
 	var r = new Vector2(dp1,dp2);
 	return vec2_sort(r);
 }
@@ -452,6 +452,22 @@ function collide_rectangle_in_oriented_rectangle(rectangle,oriented_rectangle) {
 	
 	edge = oriented_rectangle_edge(oriented_rectangle,1);
 	return !separating_axis_for_rect(edge,rectangle);
+}
+
+#endregion
+
+#region Collision depth functions
+
+/// @func collision_depth_circles
+function collision_depth_circles(a,b) {
+	var diff = vec2_subtract(a.get_global_position(),b.get_global_position());
+	var dist = vec2_length(diff);
+	var sumrad = a.radius + b.radius;
+	var penetration_depth = sumrad - dist;
+		
+	var dir = vec2_normalized(diff);
+	return vec2_multiply(dir,penetration_depth);
+	//return penetration;
 }
 
 #endregion
