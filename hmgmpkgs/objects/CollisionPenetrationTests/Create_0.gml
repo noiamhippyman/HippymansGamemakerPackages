@@ -13,7 +13,7 @@ function update(dt) {
 	
 	
 	if (collide_circles(s1.shape,s2.shape)) {
-		col_depth = collision_depth_circles(s1.shape,s2.shape);
+		col_depth = penetration_vector_circles(s1.shape,s2.shape);
 		
 		var a = s1.shape;
 		var b = s2.shape;

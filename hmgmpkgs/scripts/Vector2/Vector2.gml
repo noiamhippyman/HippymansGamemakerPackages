@@ -37,6 +37,11 @@ function vec2_length(v) {
 	return point_distance(0,0,v.x,v.y);
 }
 
+/// @func vec2_angle
+function vec2_angle(v) {
+	return point_direction(0,0,v.x,v.y);
+}
+
 /// @func vec2_normalized
 function vec2_normalized(v) {
 	return vec2_divide(v,vec2_length(v));
@@ -86,6 +91,11 @@ function vec2_equals(a,b) {
 /// @func vec2_distance
 function vec2_distance(a,b) {
 	return point_distance(a.x,a.y,b.x,b.y);
+}
+
+/// @func vec2_direction
+function vec2_direction(a,b) {
+	return point_direction(a.x,a.y,b.x,b.y);
 }
 
 /// @func vec2_rotate_90

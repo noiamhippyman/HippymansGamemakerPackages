@@ -456,10 +456,10 @@ function collide_rectangle_in_oriented_rectangle(rectangle,oriented_rectangle) {
 
 #endregion
 
-#region Collision depth functions
+#region Penetration Vector return functions
 
-/// @func collision_depth_circles
-function collision_depth_circles(a,b) {
+/// @func penetration_vector_circles
+function penetration_vector_circles(a,b) {
 	var diff = vec2_subtract(a.get_global_position(),b.get_global_position());
 	var dist = vec2_length(diff);
 	var sumrad = a.radius + b.radius;
@@ -467,7 +467,54 @@ function collision_depth_circles(a,b) {
 		
 	var dir = vec2_normalized(diff);
 	return vec2_multiply(dir,penetration_depth);
-	//return penetration;
+}
+
+/// @func penetration_vector_circle_in_rectangle
+function penetration_vector_circle_in_rectangle(circle,rectangle) {
+	var rpos = rectangle.get_global_position();
+	var rx = rpos.x;
+	var ry = rpos.y;
+	var cpos = circle.get_global_position();
+	var cx = cpos.x;
+	var cy = cpos.y;
+	var nearest_x = max(rx,min(cx,rx + rectangle.size.x));
+	var nearest_y = max(ry,min(cy,ry + rectangle.size.y));
+	var distance = {
+		x: cx - nearest_x,
+		y: cy - nearest_y
+	};
+	
+	var penetration_depth = circle.radius - vec2_length(distance);
+	return vec2_multiply(vec2_normalized(distance),penetration_depth);
+}
+
+/// @func penetration_vector_circle_in_oriented_rectangle
+function penetration_vector_circle_in_oriented_rectangle(circle,oriented_rectangle) {
+	// make normal rectangle in oriented_rectangle.position - oriented_rectangle.extents
+	// normal rect.size = oriented_rectangle.extents * 2
+	// rotate circle position relative to oriented rectangle - rotation
+	// get penetration vector circle in rectangle
+	// rotate penetration vector to oriented rectangles angle
+	var orpos = oriented_rectangle.get_global_position();
+	var orsize = oriented_rectangle.half_size;
+	var orangle = oriented_rectangle.angle;
+	var rpos = vec2_subtract(orpos,orsize);
+	var rsize = vec2_multiply(orsize,2);
+	var normal_rect = rectangle_create(noone,rpos.x,rpos.y,rsize.x,rsize.y);
+	
+	var cpos = circle.get_global_position();
+	var dist = vec2_distance(orpos,cpos);
+	var dir = vec2_direction(orpos,cpos) - orangle;
+	var offset = new Vector2(
+		lengthdir_x(dist,dir),
+		lengthdir_y(dist,dir)
+	);
+	var tcpos = vec2_add(orpos,offset);
+	var transposed_circle = circle_create(noone,tcpos.x,tcpos.y,circle.radius);
+	
+	var penetration = penetration_vector_circle_in_rectangle(transposed_circle,normal_rect);
+	
+	return vec2_rotate(penetration,orangle);
 }
 
 #endregion
