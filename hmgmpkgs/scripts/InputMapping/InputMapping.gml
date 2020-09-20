@@ -1,26 +1,26 @@
-// TODO: Make a simple file format to import action/axis mappings
+// TODO: return Make a simple file format to import action/axis mappings
 /*
 	{
-		"actions": {
-			"Jump": [
-				{ type: "KEYBOARD", input: "Space Bar" },
-				{ type: "GAMEPAD_BUTTON", input: "Gamepad Face Button Down" }
+		"actions": return {
+			"Jump": return [
+				{ type: return "KEYBOARD", input: return "Space Bar" },
+				{ type: return "GAMEPAD_BUTTON", input: return "Gamepad Face Button Down" }
 			],
-			"Fire": [
-				{ type: "MOUSE", input: "Mouse Left Button" },
-				{ type: "GAMEPAD_BUTTON", input: "Gamepad Right Shoulder" }
+			"Fire": return [
+				{ type: return "MOUSE", input: return "Mouse Left Button" },
+				{ type: return "GAMEPAD_BUTTON", input: return "Gamepad Right Shoulder" }
 			]
 		},
-		"axes": {
-			"MoveUp": [
-				{ type: "GAMEPAD_STICK", input: "Gamepad Left-Stick Vertical", scale: 1 },
-				{ type: "KEYBOARD", input: "W", scale: -1 },
-				{ type: "KEYBOARD", input: "S", scale: 1 }
+		"axes": return {
+			"MoveUp": return [
+				{ type: return "GAMEPAD_STICK", input: return "Gamepad Left-Stick Vertical", scale: return 1 },
+				{ type: return "KEYBOARD", input: return "W", scale: return -1 },
+				{ type: return "KEYBOARD", input: return "S", scale: return 1 }
 			],
-			"MoveRight": [
-				{ type: "GAMEPAD_STICK", input: "Gamepad Left-Stick Horizontal", scale: 1 },
-				{ type: "KEYBOARD", input: "D", scale: 1 },
-				{ type: "KEYBOARD", input: "A", scale: -1 }
+			"MoveRight": return [
+				{ type: return "GAMEPAD_STICK", input: return "Gamepad Left-Stick Horizontal", scale: return 1 },
+				{ type: return "KEYBOARD", input: return "D", scale: return 1 },
+				{ type: return "KEYBOARD", input: return "A", scale: return -1 }
 			]
 		}
 	}
@@ -32,137 +32,6 @@ enum eINPUT_TYPE {
 	GAMEPAD_BUTTON,
 	GAMEPAD_TRIGGER,
 	GAMEPAD_STICK
-}
-
-function InputConverter() constructor {
-	type_conversion_map = ds_map_create();
-	type_conversion_map[? "MOUSE" ] = eINPUT_TYPE.MOUSE;
-	type_conversion_map[? "KEYBOARD" ] = eINPUT_TYPE.KEYBOARD;
-	type_conversion_map[? "GAMEPAD_BUTTON" ] = eINPUT_TYPE.GAMEPAD_BUTTON;
-	type_conversion_map[? "GAMEPAD_TRIGGER" ] = eINPUT_TYPE.GAMEPAD_TRIGGER;
-	type_conversion_map[? "GAMEPAD_STICK" ] = eINPUT_TYPE.GAMEPAD_STICK;
-	
-	input_conversion_map = ds_map_create();
-	input_conversion_map[? "Left" ] = vk_left;
-	input_conversion_map[? "Right" ] = vk_right;
-	input_conversion_map[? "Up" ] = vk_up;
-	input_conversion_map[? "Down" ] = vk_down;
-	input_conversion_map[? "Enter" ] = vk_enter;
-	input_conversion_map[? "Escape" ] = vk_escape;
-	input_conversion_map[? "Space Bar" ] = vk_space;
-	input_conversion_map[? "Shift" ] = vk_shift;
-	input_conversion_map[? "Control" ] = vk_control;
-	input_conversion_map[? "Backspace" ] = vk_backspace;
-	input_conversion_map[? "Tab" ] = vk_tab;
-	input_conversion_map[? "Home" ] = vk_home;
-	input_conversion_map[? "End" ] = vk_end;
-	input_conversion_map[? "Delete" ] = vk_delete;
-	input_conversion_map[? "Insert" ] = vk_insert;
-	input_conversion_map[? "Page Up" ] = vk_pageup;
-	input_conversion_map[? "Page Down" ] = vk_pagedown;
-	input_conversion_map[? "Pause" ] = vk_pause;
-	input_conversion_map[? "Print" ] = vk_printscreen;
-	input_conversion_map[? "F1" ] = vk_f1;
-	input_conversion_map[? "F2" ] = vk_f2;
-	input_conversion_map[? "F3" ] = vk_f3;
-	input_conversion_map[? "F4" ] = vk_f4;
-	input_conversion_map[? "F5" ] = vk_f5;
-	input_conversion_map[? "F6" ] = vk_f6;
-	input_conversion_map[? "F7" ] = vk_f7;
-	input_conversion_map[? "F8" ] = vk_f8;
-	input_conversion_map[? "F9" ] = vk_f9;
-	input_conversion_map[? "F10" ] = vk_f10;
-	input_conversion_map[? "F11" ] = vk_f11;
-	input_conversion_map[? "F12" ] = vk_f12;
-	input_conversion_map[? "Num 0" ] = vk_numpad0;
-	input_conversion_map[? "Num 1" ] = vk_numpad1;
-	input_conversion_map[? "Num 2" ] = vk_numpad2;
-	input_conversion_map[? "Num 3" ] = vk_numpad3;
-	input_conversion_map[? "Num 4" ] = vk_numpad4;
-	input_conversion_map[? "Num 5" ] = vk_numpad5;
-	input_conversion_map[? "Num 6" ] = vk_numpad6;
-	input_conversion_map[? "Num 7" ] = vk_numpad7;
-	input_conversion_map[? "Num 8" ] = vk_numpad8;
-	input_conversion_map[? "Num 9" ] = vk_numpad9;
-	input_conversion_map[? "Num *" ] = vk_multiply;
-	input_conversion_map[? "Num /" ] = vk_divide;
-	input_conversion_map[? "Num +" ] = vk_add;
-	input_conversion_map[? "Num -" ] = vk_subtract;
-	input_conversion_map[? "Num ." ] = vk_decimal;
-	input_conversion_map[? "0" ] = ord("0");
-	input_conversion_map[? "1" ] = ord("1");
-	input_conversion_map[? "2" ] = ord("2");
-	input_conversion_map[? "3" ] = ord("3");
-	input_conversion_map[? "4" ] = ord("4");
-	input_conversion_map[? "5" ] = ord("5");
-	input_conversion_map[? "6" ] = ord("6");
-	input_conversion_map[? "7" ] = ord("7");
-	input_conversion_map[? "8" ] = ord("8");
-	input_conversion_map[? "9" ] = ord("9");
-	input_conversion_map[? "A" ] = ord("A");
-	input_conversion_map[? "B" ] = ord("B");
-	input_conversion_map[? "C" ] = ord("C");
-	input_conversion_map[? "D" ] = ord("D");
-	input_conversion_map[? "E" ] = ord("E");
-	input_conversion_map[? "F" ] = ord("F");
-	input_conversion_map[? "G" ] = ord("G");
-	input_conversion_map[? "H" ] = ord("H");
-	input_conversion_map[? "I" ] = ord("I");
-	input_conversion_map[? "J" ] = ord("J");
-	input_conversion_map[? "K" ] = ord("K");
-	input_conversion_map[? "L" ] = ord("L");
-	input_conversion_map[? "M" ] = ord("M");
-	input_conversion_map[? "N" ] = ord("N");
-	input_conversion_map[? "O" ] = ord("O");
-	input_conversion_map[? "P" ] = ord("P");
-	input_conversion_map[? "Q" ] = ord("Q");
-	input_conversion_map[? "R" ] = ord("R");
-	input_conversion_map[? "S" ] = ord("S");
-	input_conversion_map[? "T" ] = ord("T");
-	input_conversion_map[? "U" ] = ord("U");
-	input_conversion_map[? "V" ] = ord("V");
-	input_conversion_map[? "W" ] = ord("W");
-	input_conversion_map[? "X" ] = ord("X");
-	input_conversion_map[? "Y" ] = ord("Y");
-	input_conversion_map[? "Z" ] = ord("Z");
-	
-	input_conversion_map[? "Left Mouse Button" ] = mb_left;
-	input_conversion_map[? "Middle Mouse Button" ] = mb_middle;
-	input_conversion_map[? "Right Mouse Button" ] = mb_right;
-	
-	input_conversion_map[? "Gamepad Face Button Bottom" ] = gp_face1;
-	input_conversion_map[? "Gamepad Face Button Right" ] = gp_face2;
-	input_conversion_map[? "Gamepad Face Button Left" ] = gp_face3;
-	input_conversion_map[? "Gamepad Face Button Top" ] = gp_face4;
-	input_conversion_map[? "Gamepad Left Bumper" ] = gp_shoulderl;
-	input_conversion_map[? "Gamepad Left Trigger" ] = gp_shoulderlb;
-	input_conversion_map[? "Gamepad Right Bumper" ] = gp_shoulderr;
-	input_conversion_map[? "Gamepad Right Trigger" ] = gp_shoulderrb;
-	input_conversion_map[? "Gamepad Select" ] = gp_select;
-	input_conversion_map[? "Gamepad Start" ] = gp_select;
-	input_conversion_map[? "Gamepad Stick Button Left" ] = gp_select;
-	input_conversion_map[? "Gamepad Stick Button Right" ] = gp_select;
-	input_conversion_map[? "Gamepad D-pad Up" ] = gp_padu;
-	input_conversion_map[? "Gamepad D-pad Down" ] = gp_padd;
-	input_conversion_map[? "Gamepad D-pad Left" ] = gp_padl;
-	input_conversion_map[? "Gamepad D-pad Right" ] = gp_padr;
-	input_conversion_map[? "Gamepad Left Stick X-Axis" ] = gp_axislh;
-	input_conversion_map[? "Gamepad Left Stick Y-Axis" ] = gp_axislv;
-	input_conversion_map[? "Gamepad Right Stick X-Axis" ] = gp_axisrh;
-	input_conversion_map[? "Gamepad Right Stick Y-Axis" ] = gp_axisrv;
-	
-	
-	static get_type = function(name) { return type_conversion_map[? name ]; }
-	static get_input = function(name) { return input_conversion_map[? name ]; }
-}
-
-function input_converter_create() {
-	return new InputConverter();
-}
-
-function input_converter_destroy(converter) {
-	ds_map_destroy(converter.input_conversion_map);
-	ds_map_destroy(converter.type_conversion_map);
 }
 
 // Action mapping
@@ -378,7 +247,179 @@ function input_manager_create() {
 function input_manager_destroy(manager) {
 	ds_map_destroy(manager.action_map);
 	ds_map_destroy(manager.axis_map);
-	ds_map_destroy(manager.type_conversion_map);
-	ds_map_destroy(manager.input_conversion_map);
 	delete manager;
+}
+
+function input_manager_load_convert_action_type(type) {
+	switch (type) {
+		case "MOUSE": return eINPUT_TYPE.MOUSE; break;
+		case "KEYBOARD": return eINPUT_TYPE.KEYBOARD; break;
+		case "GAMEPAD_BUTTON": return eINPUT_TYPE.GAMEPAD_BUTTON; break;
+		case "GAMEPAD_TRIGGER": return eINPUT_TYPE.GAMEPAD_TRIGGER; break;
+		case "GAMEPAD_STICK": return eINPUT_TYPE.GAMEPAD_STICK; break;
+		default:
+			show_error(type + " is not a proper type. Check your spelling.",true);
+			break;
+	}
+}
+
+function input_manager_load_convert_action_input(input) {
+	switch (input) {
+		case "Left": return vk_left; break;
+		case "Right": return vk_right; break;
+		case "Up": return vk_up; break;
+		case "Down": return vk_down; break;
+		case "Enter": return vk_enter; break;
+		case "Escape": return vk_escape; break;
+		case "Space Bar": return vk_space; break;
+		case "Shift": return vk_shift; break;
+		case "Control": return vk_control; break;
+		case "Backspace": return vk_backspace; break;
+		case "Tab": return vk_tab; break;
+		case "Home": return vk_home; break;
+		case "End": return vk_end; break;
+		case "Delete": return vk_delete; break;
+		case "Insert": return vk_insert; break;
+		case "Page Up": return vk_pageup; break;
+		case "Page Down": return vk_pagedown; break;
+		case "Pause": return vk_pause; break;
+		case "Print": return vk_printscreen; break;
+		case "F1": return vk_f1; break;
+		case "F2": return vk_f2; break;
+		case "F3": return vk_f3; break;
+		case "F4": return vk_f4; break;
+		case "F5": return vk_f5; break;
+		case "F6": return vk_f6; break;
+		case "F7": return vk_f7; break;
+		case "F8": return vk_f8; break;
+		case "F9": return vk_f9; break;
+		case "F10": return vk_f10; break;
+		case "F11": return vk_f11; break;
+		case "F12": return vk_f12; break;
+		case "Num 0": return vk_numpad0; break;
+		case "Num 1": return vk_numpad1; break;
+		case "Num 2": return vk_numpad2; break;
+		case "Num 3": return vk_numpad3; break;
+		case "Num 4": return vk_numpad4; break;
+		case "Num 5": return vk_numpad5; break;
+		case "Num 6": return vk_numpad6; break;
+		case "Num 7": return vk_numpad7; break;
+		case "Num 8": return vk_numpad8; break;
+		case "Num 9": return vk_numpad9; break;
+		case "Num *": return vk_multiply; break;
+		case "Num /": return vk_divide; break;
+		case "Num +": return vk_add; break;
+		case "Num -": return vk_subtract; break;
+		case "Num .": return vk_decimal; break;
+		case "0": return ord("0"); break;
+		case "1": return ord("1"); break;
+		case "2": return ord("2"); break;
+		case "3": return ord("3"); break;
+		case "4": return ord("4"); break;
+		case "5": return ord("5"); break;
+		case "6": return ord("6"); break;
+		case "7": return ord("7"); break;
+		case "8": return ord("8"); break;
+		case "9": return ord("9"); break;
+		case "A": return ord("A"); break;
+		case "B": return ord("B"); break;
+		case "C": return ord("C"); break;
+		case "D": return ord("D"); break;
+		case "E": return ord("E"); break;
+		case "F": return ord("F"); break;
+		case "G": return ord("G"); break;
+		case "H": return ord("H"); break;
+		case "I": return ord("I"); break;
+		case "J": return ord("J"); break;
+		case "K": return ord("K"); break;
+		case "L": return ord("L"); break;
+		case "M": return ord("M"); break;
+		case "N": return ord("N"); break;
+		case "O": return ord("O"); break;
+		case "P": return ord("P"); break;
+		case "Q": return ord("Q"); break;
+		case "R": return ord("R"); break;
+		case "S": return ord("S"); break;
+		case "T": return ord("T"); break;
+		case "U": return ord("U"); break;
+		case "V": return ord("V"); break;
+		case "W": return ord("W"); break;
+		case "X": return ord("X"); break;
+		case "Y": return ord("Y"); break;
+		case "Z": return ord("Z"); break;
+	
+		case "Mouse Left Button": return mb_left; break;
+		case "Mouse Middle Button": return mb_middle; break;
+		case "Mouse Right Button": return mb_right; break;
+	
+		case "Gamepad Face Button Bottom": return gp_face1; break;
+		case "Gamepad Face Button Right": return gp_face2; break;
+		case "Gamepad Face Button Left": return gp_face3; break;
+		case "Gamepad Face Button Top": return gp_face4; break;
+		case "Gamepad Left Bumper": return gp_shoulderl; break;
+		case "Gamepad Left Trigger": return gp_shoulderlb; break;
+		case "Gamepad Right Bumper": return gp_shoulderr; break;
+		case "Gamepad Right Trigger": return gp_shoulderrb; break;
+		case "Gamepad Select": return gp_select; break;
+		case "Gamepad Start": return gp_select; break;
+		case "Gamepad Stick Button Left": return gp_select; break;
+		case "Gamepad Stick Button Right": return gp_select; break;
+		case "Gamepad D-pad Up": return gp_padu; break;
+		case "Gamepad D-pad Down": return gp_padd; break;
+		case "Gamepad D-pad Left": return gp_padl; break;
+		case "Gamepad D-pad Right": return gp_padr; break;
+		case "Gamepad Left Stick X-Axis": return gp_axislh; break;
+		case "Gamepad Left Stick Y-Axis": return gp_axislv; break;
+		case "Gamepad Right Stick X-Axis": return gp_axisrh; break;
+		case "Gamepad Right Stick Y-Axis": return gp_axisrv; break;
+		default:
+			show_error(input + " is not a proper input. Check your spelling.",true);
+			break;
+	}
+}
+
+function input_manager_load_settings(manager,path) {
+	
+	// clear existing settings
+	ds_map_clear(manager.action_map);
+	ds_map_clear(manager.axis_map);
+	
+	var input_data = json_load_from_file(path);
+	var action_count = variable_struct_names_count(input_data.actions);
+	var action_names = variable_struct_get_names(input_data.actions);
+	for (var i = 0; i < action_count; ++i) {
+		var name = action_names[ i ];
+		var action_inputs = variable_struct_get(input_data.actions,name);
+		var input_count = array_length(action_inputs);
+		for (var j = 0; j < input_count; ++j) {
+			var action = action_inputs[ j ];
+			var type = input_manager_load_convert_action_type(action.type);
+			var input;
+			if (is_array(action.input)) {
+				input = [ input_manager_load_convert_action_input(action.input[0]), input_manager_load_convert_action_input(action.input[1]) ];
+			} else {
+				input = input_manager_load_convert_action_input(action.input);
+			}
+			manager.add_action_input(name,type,input);
+		}
+	}
+	
+	var axis_count = variable_struct_names_count(input_data.axes);
+	var axis_names = variable_struct_get_names(input_data.axes);
+	for (var i = 0; i < axis_count; ++i) {
+		var name = axis_names[ i ];
+		var axis_inputs = variable_struct_get(input_data.axes,name);
+		var input_count = array_length(axis_inputs);
+		for (var j = 0; j < input_count; ++j) {
+			var axis = axis_inputs[ j ];
+			var type = input_manager_load_convert_action_type(axis.type);
+			var input;
+			if (is_array(axis.input)) {
+				input = [ input_manager_load_convert_action_input(axis.input[0]), input_manager_load_convert_action_input(axis.input[1]) ];
+			} else {
+				input = input_manager_load_convert_action_input(axis.input);
+			}
+			manager.add_axis_input(name,type,input,axis.scale);
+		}
+	}
 }

@@ -1,0 +1,28 @@
+{
+    "actions": {
+        "Jump": [
+            { "type": "KEYBOARD", "input": "Space Bar" },
+            { "type": "GAMEPAD_BUTTON", "input": "Gamepad Face Button Bottom" }
+        ],
+        "Fire": [
+            { "type": "MOUSE", "input": "Mouse Left Button" },
+            { "type": "GAMEPAD_TRIGGER", "input": "Gamepad Right Trigger" }
+        ]
+    },
+    "axes": {
+        "MoveUp": [
+            { "type": "GAMEPAD_STICK", "input": "Gamepad Left Stick Y-Axis", "scale": 1 },
+            { "type": "KEYBOARD", "input": ["W","S"], "scale": -1 }
+        ],
+        "MoveRight": [
+            { "type": "GAMEPAD_STICK", "input": "Gamepad Left Stick X-Axis", "scale": 1 },
+            { "type": "KEYBOARD", "input": ["D","A"], "scale": 1 }
+        ],
+        "SingleTrigger": [
+            { "type": "GAMEPAD_TRIGGER", "input": "Gamepad Right Trigger", "scale": 1 }
+        ],
+        "BothTriggers": [
+            { "type": "GAMEPAD_TRIGGER", "input": ["Gamepad Left Trigger", "Gamepad Right Trigger"], "scale": 1 }
+        ]
+    }
+}
