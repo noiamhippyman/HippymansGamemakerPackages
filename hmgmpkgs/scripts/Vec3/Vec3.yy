@@ -6,7 +6,7 @@
     "path": "folders/Core.yy",
   },
   "resourceVersion": "1.0",
-  "name": "StateMachine",
+  "name": "Vec3",
   "tags": [],
   "resourceType": "GMScript",
 }

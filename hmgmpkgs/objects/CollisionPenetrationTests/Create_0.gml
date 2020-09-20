@@ -4,8 +4,8 @@ s1.shape = circle_create(s1.id,0,0,32);
 s2 = instance_create_layer(0, 0,"Instances",ShapeObject);
 s2.shape = circle_create(s2.id,0,0,32);
 
-col_depth = new Vector2(0,0);
-col_pt = new Vector2(0,0);
+col_depth = new Vec2(0,0);
+col_pt = new Vec2(0,0);
 
 function update(dt) {
 	s2.x = mouse_x;
@@ -17,11 +17,11 @@ function update(dt) {
 		
 		var a = s1.shape;
 		var b = s2.shape;
-		var diff = vec2_subtract(a.get_global_position(),b.get_global_position());
-		var dir = vec2_normalized(diff);
+		var diff = a.get_global_position().subtract(b.get_global_position());
+		var dir = diff.normalized();
 		var len = a.radius;
-		col_pt = vec2_multiply(dir,len);
-		col_pt = vec2_subtract(new Vector2(s1.x,s1.y),col_pt);
+		col_pt = dir.multiply(len);
+		col_pt = new Vec2(s1.x,s1.y).subtract(col_pt);
 		
 	} else {
 		col_depth.x = 0;

@@ -1,17 +1,17 @@
 /// @func Shape
 function Shape(inst_id,pos_x,pos_y) constructor {
 	instance = inst_id;
-	origin = new Vector2(pos_x,pos_y);
+	origin = new Vec2(pos_x,pos_y);
 	
 	static get_global_position = function() {
 		if (instance_exists(instance)) {
-			var len = vec2_length(origin);
-			var dir = point_direction(0,0,origin.x,origin.y) + instance.image_angle;
-			return new Vector2(
+			var len = origin.length();
+			var dir = origin.angle() + instance.image_angle;
+			return new Vec2(
 				instance.x + lengthdir_x(len,dir),
 				instance.y + lengthdir_y(len,dir)
 			);
-			//gpos = vec2_add(gpos,new Vector2(instance.x,instance.y));
+			//gpos = add(gpos,new Vec2(instance.x,instance.y));
 		} else {
 			return origin;
 		}
@@ -22,7 +22,7 @@ function Shape(inst_id,pos_x,pos_y) constructor {
 
 /// @func Circle
 function Circle(inst_id,pos_x,pos_y,_radius) : Shape(inst_id,pos_x,pos_y) constructor {
-	//origin = new Vector2(pos_x,pos_y);
+	//origin = new Vec2(pos_x,pos_y);
 	radius = _radius;
 }
 
@@ -43,14 +43,14 @@ function circle_destroy(circle) {
 
 /// @func Line
 function Line(inst_id,pos_x,pos_y,dir_x,dir_y) : Shape(inst_id,pos_x,pos_y) constructor {
-	//origin = new Vector2(pos_x,pos_y);
-	angle = new Vector2(dir_x,dir_y);
+	//origin = new Vec2(pos_x,pos_y);
+	angle = new Vec2(dir_x,dir_y);
 	
 	static get_global_angle = function() {
 		if (instance_exists(instance)) {
 			var a = point_direction(0,0,angle.x,angle.y) + instance.image_angle;
-			//var img_angle = new Vector2(lengthdir_x(1,instance.image_angle),lengthdir_y(1,instance.image_angle));
-			return new Vector2(lengthdir_x(1,a),lengthdir_y(1,a));
+			//var img_angle = new Vec2(lengthdir_x(1,instance.image_angle),lengthdir_y(1,instance.image_angle));
+			return new Vec2(lengthdir_x(1,a),lengthdir_y(1,a));
 			//return angle + instance.image_angle;
 		} else {
 			return angle;
@@ -83,14 +83,14 @@ function line_destroy(line) {
 
 /// LineSegment
 function LineSegment(inst_id,x1,y1,x2,y2) : Shape(inst_id,x1,y1) constructor {
-	//origin = new Vector2(x1,y1);
-	endpoint = new Vector2(x2,y2);
+	//origin = new Vec2(x1,y1);
+	endpoint = new Vec2(x2,y2);
 	
 	static get_end_global_position = function() {
 		if (instance_exists(instance)) {
-			var len = vec2_length(endpoint);
-			var dir = point_direction(0,0,endpoint.x,endpoint.y) + instance.image_angle;
-			return new Vector2(
+			var len = endpoint.length();
+			var dir = endpoint.angle() + instance.image_angle;
+			return new Vec2(
 				instance.x + lengthdir_x(len,dir),
 				instance.y + lengthdir_y(len,dir)
 			);
@@ -118,8 +118,8 @@ function line_segment_destroy(line_segment) {
 
 /// @func OrientedRectangle 
 function OrientedRectangle(inst_id,pos_x,pos_y,width,height,_angle) : Shape(inst_id,pos_x,pos_y) constructor {
-	//origin = new Vector2(pos_x,pos_y);
-	half_size = new Vector2(width/2, height/2);
+	//origin = new Vec2(pos_x,pos_y);
+	half_size = new Vec2(width/2, height/2);
 	angle = _angle;
 	
 	static get_global_angle = function() {
@@ -149,8 +149,8 @@ function oriented_rectangle_destroy(oriented_rectangle) {
 
 /// @func Rectangle
 function Rectangle(inst_id,pos_x,pos_y,width,height) : Shape(inst_id,pos_x,pos_y) constructor {
-	//origin = new Vector2(pos_x,pos_y);
-	size = new Vector2(width,height);
+	//origin = new Vec2(pos_x,pos_y);
+	size = new Vec2(width,height);
 }
 
 /// @func rectangle_create
@@ -173,7 +173,7 @@ function rectangle_destroy(rectangle) {
 function debug_draw_line(line) {
 	var size = max(room_width,room_height) * 2;
 	var line_gangle = line.get_global_angle();
-	var angle = point_direction(0,0,line_gangle.x,line_gangle.y);
+	var angle = line_gangle.angle();
 	
 	var lpos = line.get_global_position();
 	var lx = lpos.x;
