@@ -1,31 +1,3 @@
-// TODO: return Make a simple file format to import action/axis mappings
-/*
-	{
-		"actions": return {
-			"Jump": return [
-				{ type: return "KEYBOARD", input: return "Space Bar" },
-				{ type: return "GAMEPAD_BUTTON", input: return "Gamepad Face Button Down" }
-			],
-			"Fire": return [
-				{ type: return "MOUSE", input: return "Mouse Left Button" },
-				{ type: return "GAMEPAD_BUTTON", input: return "Gamepad Right Shoulder" }
-			]
-		},
-		"axes": return {
-			"MoveUp": return [
-				{ type: return "GAMEPAD_STICK", input: return "Gamepad Left-Stick Vertical", scale: return 1 },
-				{ type: return "KEYBOARD", input: return "W", scale: return -1 },
-				{ type: return "KEYBOARD", input: return "S", scale: return 1 }
-			],
-			"MoveRight": return [
-				{ type: return "GAMEPAD_STICK", input: return "Gamepad Left-Stick Horizontal", scale: return 1 },
-				{ type: return "KEYBOARD", input: return "D", scale: return 1 },
-				{ type: return "KEYBOARD", input: return "A", scale: return -1 }
-			]
-		}
-	}
-*/
-
 enum eINPUT_TYPE {
 	MOUSE,
 	KEYBOARD,
@@ -34,18 +6,22 @@ enum eINPUT_TYPE {
 	GAMEPAD_STICK
 }
 
-// Action mapping
+/// @func ActionInput
 function ActionInput(_type, _input) constructor {
 	type = _type;
 	input = _input;
 }
 
+/// @func ActionMapping
 function ActionMapping() constructor {
 	inputs = [];
+	
+	/// @func add_input
 	static add_input = function(action_input) {
 		inputs[@ array_length(inputs) ] = action_input;
 	}
 	
+	/// @func is_held
 	static is_held = function() {
 		var count = array_length(inputs);
 		for (var i = 0; i < count; ++i) {
@@ -71,6 +47,7 @@ function ActionMapping() constructor {
 		return false;
 	}
 	
+	/// @func is_pressed
 	static is_pressed = function() {
 		var count = array_length(inputs);
 		for (var i = 0; i < count; ++i) {
@@ -96,6 +73,7 @@ function ActionMapping() constructor {
 		return false;
 	}
 	
+	/// @func is_released
 	static is_released = function() {
 		var count = array_length(inputs);
 		for (var i = 0; i < count; ++i) {
@@ -122,20 +100,23 @@ function ActionMapping() constructor {
 	}
 }
 
-
-// Axis mapping
+/// @func AxisInput
 function AxisInput(_type, _input, _scale) constructor {
 	type = _type;
 	input = _input;
 	scale = _scale;
 }
 
+/// @func AxisMapping
 function AxisMapping() constructor {
 	inputs = [];
+	
+	/// @func add_input
 	static add_input = function(axis_input) {
 		inputs[@ array_length(inputs) ] = axis_input;
 	}
 	
+	/// @func get_value
 	static get_value = function() {
 		var count = array_length(inputs);
 		for (var i = 0; i < count; ++i) {
@@ -173,7 +154,7 @@ function AxisMapping() constructor {
 	}
 }
 
-// Input manager
+/// @func Input manager
 function InputManager() constructor {
 	action_map = ds_map_create();
 	axis_map = ds_map_create();
@@ -240,16 +221,19 @@ function InputManager() constructor {
 	}
 }
 
+/// @func input_manager_create
 function input_manager_create() {
 	return new InputManager();
 }
 
+/// @func input_manager_destroy
 function input_manager_destroy(manager) {
 	ds_map_destroy(manager.action_map);
 	ds_map_destroy(manager.axis_map);
 	delete manager;
 }
 
+/// @func input_manager_load_convert_action_type
 function input_manager_load_convert_action_type(type) {
 	switch (type) {
 		case "MOUSE": return eINPUT_TYPE.MOUSE; break;
@@ -263,6 +247,7 @@ function input_manager_load_convert_action_type(type) {
 	}
 }
 
+/// @func input_manager_load_convert_action_input
 function input_manager_load_convert_action_input(input) {
 	switch (input) {
 		case "Left": return vk_left; break;
@@ -378,6 +363,7 @@ function input_manager_load_convert_action_input(input) {
 	}
 }
 
+/// @func input_manager_load_settings
 function input_manager_load_settings(manager,path) {
 	
 	// clear existing settings
@@ -385,6 +371,8 @@ function input_manager_load_settings(manager,path) {
 	ds_map_clear(manager.axis_map);
 	
 	var input_data = json_load_from_file(path);
+	
+	// Load actions
 	var action_count = variable_struct_names_count(input_data.actions);
 	var action_names = variable_struct_get_names(input_data.actions);
 	for (var i = 0; i < action_count; ++i) {
@@ -404,6 +392,7 @@ function input_manager_load_settings(manager,path) {
 		}
 	}
 	
+	// Load axes
 	var axis_count = variable_struct_names_count(input_data.axes);
 	var axis_names = variable_struct_get_names(input_data.axes);
 	for (var i = 0; i < axis_count; ++i) {

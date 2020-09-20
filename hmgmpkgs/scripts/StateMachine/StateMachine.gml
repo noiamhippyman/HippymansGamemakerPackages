@@ -43,10 +43,12 @@ function StateMachine() constructor {
 	}
 }
 
+/// @func state_machine_create
 function state_machine_create() {
 	return new StateMachine();
 }
 
+/// @func state_machine_destroy
 function state_machine_destroy(state_machine) {
 	state_machine.clear();
 	ds_map_destroy(state_machine.state_map);
