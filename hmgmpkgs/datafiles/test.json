@@ -1,0 +1,23 @@
+{
+    "object": {
+        "obj_in_obj": {
+            "abra": "kadabra"
+        },
+        "arr_in_obj": [6,5,4],
+        "str_in_obj": "string in object",
+        "num_in_obj": 123,
+        "bool_in_obj": false
+    },
+    "array": [
+        {
+            "howdy": "doody"
+        },
+        [9,8,7],
+        1,
+        "string in array",
+        false
+    ],
+    "var_string": "string in root",
+    "var_real": 1000,
+    "var_bool": true
+}

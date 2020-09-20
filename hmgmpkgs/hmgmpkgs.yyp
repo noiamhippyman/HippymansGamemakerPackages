@@ -2,6 +2,7 @@
   "resources": [
     {"id":{"name":"ColTest_RectRect","path":"scripts/ColTest_RectRect/ColTest_RectRect.yy",},"order":3,},
     {"id":{"name":"ShapeObject","path":"objects/ShapeObject/ShapeObject.yy",},"order":2,},
+    {"id":{"name":"InputMappingSystemTests","path":"objects/InputMappingSystemTests/InputMappingSystemTests.yy",},"order":3,},
     {"id":{"name":"CollisionDetectionTests","path":"objects/CollisionDetectionTests/CollisionDetectionTests.yy",},"order":0,},
     {"id":{"name":"ColTest_LineRect","path":"scripts/ColTest_LineRect/ColTest_LineRect.yy",},"order":1,},
     {"id":{"name":"ColTest_PointInORect","path":"scripts/ColTest_PointInORect/ColTest_PointInORect.yy",},"order":2,},
@@ -30,6 +31,7 @@
     {"id":{"name":"ColTest_PointInRect","path":"scripts/ColTest_PointInRect/ColTest_PointInRect.yy",},"order":3,},
     {"id":{"name":"ColTest_PointInSegment","path":"scripts/ColTest_PointInSegment/ColTest_PointInSegment.yy",},"order":4,},
     {"id":{"name":"ColTest_PointInLine","path":"scripts/ColTest_PointInLine/ColTest_PointInLine.yy",},"order":1,},
+    {"id":{"name":"rmInputMappingSystemTests","path":"rooms/rmInputMappingSystemTests/rmInputMappingSystemTests.yy",},"order":2,},
     {"id":{"name":"ColTest_SegmentRect","path":"scripts/ColTest_SegmentRect/ColTest_SegmentRect.yy",},"order":5,},
     {"id":{"name":"ColTest_LineORect","path":"scripts/ColTest_LineORect/ColTest_LineORect.yy",},"order":3,},
     {"id":{"name":"ColTest_LineCircle","path":"scripts/ColTest_LineCircle/ColTest_LineCircle.yy",},"order":0,},
@@ -61,6 +63,7 @@
     "children": [],
   },
   "RoomOrder": [
+    {"name":"rmInputMappingSystemTests","path":"rooms/rmInputMappingSystemTests/rmInputMappingSystemTests.yy",},
     {"name":"rmCollisionDetectionTests","path":"rooms/rmCollisionDetectionTests/rmCollisionDetectionTests.yy",},
     {"name":"rmCollisionPenetrationTests","path":"rooms/rmCollisionPenetrationTests/rmCollisionPenetrationTests.yy",},
   ],
@@ -69,9 +72,9 @@
     {"folderPath":"folders/Rooms.yy","order":2,"resourceVersion":"1.0","name":"Rooms","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Core.yy","order":3,"resourceVersion":"1.0","name":"Core","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Collision Test Render States.yy","order":4,"resourceVersion":"1.0","name":"Collision Test Render States","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Scripts/Collision Test Render States/Same Shapes.yy","order":6,"resourceVersion":"1.0","name":"Same Shapes","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Scripts/Collision Test Render States/Point In Shape.yy","order":11,"resourceVersion":"1.0","name":"Point In Shape","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Scripts/Collision Test Render States/Different Shapes.yy","order":12,"resourceVersion":"1.0","name":"Different Shapes","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Collision Test Render States/Same Shapes.yy","order":2,"resourceVersion":"1.0","name":"Same Shapes","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Collision Test Render States/Point In Shape.yy","order":1,"resourceVersion":"1.0","name":"Point In Shape","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Collision Test Render States/Different Shapes.yy","order":0,"resourceVersion":"1.0","name":"Different Shapes","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":461609314234257646,"resourceVersion":"1.0","name":"audiogroup_default","resourceType":"GMAudioGroup",},
@@ -79,7 +82,9 @@
   "TextureGroups": [
     {"isScaled":true,"autocrop":true,"border":2,"mipsToGenerate":0,"targets":461609314234257646,"resourceVersion":"1.0","name":"Default","resourceType":"GMTextureGroup",},
   ],
-  "IncludedFiles": [],
+  "IncludedFiles": [
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"test.json","resourceType":"GMIncludedFile",},
+  ],
   "MetaData": {
     "IDEVersion": "2.3.0.529",
   },

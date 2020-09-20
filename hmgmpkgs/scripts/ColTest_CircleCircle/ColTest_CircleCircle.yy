@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "Same Shapes",
-    "path": "folders/Scripts/Collision Test Render States/Same Shapes.yy",
+    "path": "folders/Collision Test Render States/Same Shapes.yy",
   },
   "resourceVersion": "1.0",
   "name": "ColTest_CircleCircle",
