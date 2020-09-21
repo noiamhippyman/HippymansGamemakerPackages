@@ -53,7 +53,6 @@ function ds_list_to_array(list) {
 		if (ds_list_is_map(list,i)) {
 			// Value is a ds_map
 			array[ i ] = ds_map_to_struct(list[| i ]);
-		//} else if (ds_exists(val,ds_type_list)) { 
 		} else if (ds_list_is_list(list,i)) {
 			// Value is a ds_list
 			array[ i ] = ds_list_to_array(list[| i ]);

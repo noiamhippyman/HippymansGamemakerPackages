@@ -48,7 +48,7 @@ function Line(inst_id,pos_x,pos_y,dir_x,dir_y) : Shape(inst_id,pos_x,pos_y) cons
 	
 	static get_global_angle = function() {
 		if (instance_exists(instance)) {
-			var a = point_direction(0,0,angle.x,angle.y) + instance.image_angle;
+			var a = angle.angle() + instance.image_angle;
 			//var img_angle = new Vec2(lengthdir_x(1,instance.image_angle),lengthdir_y(1,instance.image_angle));
 			return new Vec2(lengthdir_x(1,a),lengthdir_y(1,a));
 			//return angle + instance.image_angle;

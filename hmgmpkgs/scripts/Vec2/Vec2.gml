@@ -36,7 +36,7 @@ function Vec2(_x,_y) constructor {
 	/// @func normalized
 	static normalized = function() {
 		var len = length();
-		if (len < math_get_epsilon()) return self;
+		if (len < math_get_epsilon()) return this;
 		return divide(len);
 	}
 	
