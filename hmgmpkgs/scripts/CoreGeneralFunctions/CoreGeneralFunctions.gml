@@ -113,4 +113,68 @@ function json_load_from_file(path) {
 	return json_object;
 }
 
+/// @func array_get_string
+function array_get_string(array) {
+	var array_str = "[";
+	var count = array_length(array);
+	for (var i = 0; i < count; ++i) {
+		var val = array[i];
+		if (is_struct(val)) {
+			val = struct_get_string(val);
+		} else if (is_array(val)) {
+			val = array_get_string(val);
+		} else if (is_string(val)) {
+			val = "\"" + val + "\"";
+		} else {
+			val = string(val);
+		}
+		
+		array_str += val;
+		if (i < count-1) {
+			array_str += ",";
+		}
+	}
+	
+	array_str += "]";
+	
+	return array_str;
+}
+
+/// @func struct_get_string
+function struct_get_string(struct) {
+	var struct_str = "{";
+	var var_count = variable_struct_names_count(struct);
+	var var_names = variable_struct_get_names(struct)
+	for (var i = 0; i < var_count; ++i) {
+		var var_name = var_names[i];
+		var var_val = variable_struct_get(struct,var_name);
+		if (is_struct(var_val)) {
+			var_val = struct_get_string(var_val);
+		} else if (is_array(var_val)) {
+			var_val = array_get_string(var_val);
+		} else if (is_string(var_val)) {
+			var_val = "\"" + var_val + "\"";
+		} else {
+			var_val = string(var_val);
+		}
+		
+		struct_str += "\"" + var_name + "\"" + ":" + var_val;
+		if (i < var_count-1) {
+			struct_str += ",";
+		}
+	}
+	
+	struct_str += "}";
+	
+	return struct_str;
+}
+
+/// @func struct_save_to_file
+function struct_save_to_file(struct,path) {
+	var json_string = struct_get_string(struct);
+	var file = file_text_open_write(path);
+	file_text_write_string(file,json_string);
+	file_text_close(file);
+}
+
 #endregion

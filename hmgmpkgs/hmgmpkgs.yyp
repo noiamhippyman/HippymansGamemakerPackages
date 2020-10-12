@@ -15,6 +15,7 @@
     {"id":{"name":"ColTest_LineLine","path":"scripts/ColTest_LineLine/ColTest_LineLine.yy",},"order":1,},
     {"id":{"name":"RenderStateMachine","path":"scripts/RenderStateMachine/RenderStateMachine.yy",},"order":6,},
     {"id":{"name":"ColTest_SegmentCircle","path":"scripts/ColTest_SegmentCircle/ColTest_SegmentCircle.yy",},"order":4,},
+    {"id":{"name":"rmTests","path":"rooms/rmTests/rmTests.yy",},"order":3,},
     {"id":{"name":"ColTest_RectORect","path":"scripts/ColTest_RectORect/ColTest_RectORect.yy",},"order":9,},
     {"id":{"name":"rmCollisionPenetrationTests","path":"rooms/rmCollisionPenetrationTests/rmCollisionPenetrationTests.yy",},"order":1,},
     {"id":{"name":"ColTest_CircleCircle","path":"scripts/ColTest_CircleCircle/ColTest_CircleCircle.yy",},"order":0,},
@@ -35,6 +36,7 @@
     {"id":{"name":"ColTest_LineORect","path":"scripts/ColTest_LineORect/ColTest_LineORect.yy",},"order":3,},
     {"id":{"name":"ColTest_LineCircle","path":"scripts/ColTest_LineCircle/ColTest_LineCircle.yy",},"order":0,},
     {"id":{"name":"Shapes","path":"scripts/Shapes/Shapes.yy",},"order":2,},
+    {"id":{"name":"Object5","path":"objects/Object5/Object5.yy",},"order":4,},
     {"id":{"name":"ColTest_PointInCircle","path":"scripts/ColTest_PointInCircle/ColTest_PointInCircle.yy",},"order":0,},
     {"id":{"name":"ColTest_SegmentSegment","path":"scripts/ColTest_SegmentSegment/ColTest_SegmentSegment.yy",},"order":4,},
     {"id":{"name":"rmCollisionDetectionTests","path":"rooms/rmCollisionDetectionTests/rmCollisionDetectionTests.yy",},"order":0,},
@@ -62,6 +64,7 @@
     "children": [],
   },
   "RoomOrder": [
+    {"name":"rmTests","path":"rooms/rmTests/rmTests.yy",},
     {"name":"rmInputMappingSystemTests","path":"rooms/rmInputMappingSystemTests/rmInputMappingSystemTests.yy",},
     {"name":"rmCollisionDetectionTests","path":"rooms/rmCollisionDetectionTests/rmCollisionDetectionTests.yy",},
     {"name":"rmCollisionPenetrationTests","path":"rooms/rmCollisionPenetrationTests/rmCollisionPenetrationTests.yy",},
