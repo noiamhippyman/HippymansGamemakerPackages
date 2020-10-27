@@ -159,7 +159,6 @@ function InputManager() constructor {
 	action_map = ds_map_create();
 	axis_map = ds_map_create();
 	
-	
 	/// @func add_action
 	static add_action = function(name) {
 		var new_action = new ActionMapping();

@@ -90,6 +90,158 @@ function ds_map_to_struct(map) {
 
 #endregion
 
+#region Array functions
+
+/// @func array_back
+function array_back(arr) {
+	var index = array_length(arr) - 1;
+	return arr[@ index ];
+}
+
+/// @func array_clear
+function array_clear(arr) {
+	array_resize(arr,0);
+}
+
+/// @func array_count
+function array_count(arr,value) {
+	var len = array_length(arr);
+	var count = 0;
+	for (var i = 0; i < len; ++i) {
+		if (arr[@ i ] == value) count++;
+	}
+	return count;
+}
+
+/// @func array_empty
+function array_empty(arr) {
+	var len = array_length(arr);
+	return len == 0;
+}
+
+/// @func array_erase
+function array_erase(arr,value) {
+	var len = array_length(arr);
+	var index = -1;
+	for (var i = 0; i < len; ++i) {
+		if (arr[@ i ] == value) {
+			index = i;
+			break;
+		}
+	}
+	
+	if (index >= 0) {
+		var temp_len = len - index;
+		var temp_arr = array_create(temp_len);
+		array_copy(temp_arr,0,arr,index,temp_len);
+		array_resize(arr,len - 1);
+		array_copy(arr,index,temp_arr,1,temp_len-1);
+	}
+}
+
+/// @func array_find
+/// @args arr,value,from
+function array_find() {
+	var i = argument_count == 3 ? argument[2] : 0;
+	var arr = argument[0];
+	var len =  array_length(arr);
+	for (; i < len; ++i) {
+		if (arr[@ i ] == argument[1]) return i;
+	}
+	return -1;
+}
+
+/// @func array_find_last
+function array_find_last(arr,value) {
+	var len = array_length(arr);
+	for (var i = len - 1; i >= 0; --i) {
+		if (arr[@ i ] == value) return i;
+	}
+	return -1;
+}
+
+/// @func array_has
+function array_has(arr,value) {
+	var len = array_length(arr);
+	for (var i = 0; i < len; ++i) {
+		if (arr[@ i ] == value) return true;
+	}
+	return false;
+}
+
+/// @func array_insert
+function array_insert(arr,index,value) {
+	var len = array_length(arr);
+	var temp_len = len - index;
+	var temp_arr = array_create(temp_len);
+	array_copy(temp_arr,0,arr,index,temp_len);
+	array_resize(arr,len + 1);
+	arr[@ index ] = value;
+	array_copy(arr,index+1,temp_arr,0,temp_len);
+}
+
+/// @func array_invert
+function array_invert(arr) {
+	var len = array_length(arr);
+	var temp_arr = array_create(len);
+	for (var i = 0; i < len; ++i) {
+		temp_arr[i] = arr[@ len - (i+1) ];
+	}
+	array_copy(arr,0,temp_arr,0,len);
+}
+
+/// @func array_pop_back
+function array_pop_back(arr) {
+	if (array_empty(arr)) return undefined;
+	
+	var len = array_length(arr) - 1;
+	var value = arr[@ len ];
+	array_resize(arr,len);
+	return value;
+}
+
+/// @func array_pop_front
+function array_pop_front(arr) {
+	if (array_empty(arr)) return undefined;
+	var len = array_length(arr) - 1;
+	var temp_arr = array_create(len);
+	array_copy(temp_arr,0,arr,1,len);
+	var value = arr[@ 0 ];
+	array_resize(arr,len);
+	array_copy(arr,0,temp_arr,0,len);
+	return value;
+}
+
+/// @func array_push_back
+function array_push_back(arr,value) {
+	var len = array_length(arr);
+	array_resize(arr,len + 1);
+	arr[@ len ] = value;
+}
+
+/// @func array_push_front
+function array_push_front(arr,value) {
+	var len = array_length(arr);
+	var temp_arr = array_create(len);
+	array_copy(temp_arr,0,arr,0,len);
+	array_resize(arr,len + 1);
+	arr[@ 0 ] = value;
+	array_copy(arr,1,temp_arr,0,len);
+}
+
+/// @func array_remove
+function array_remove(arr,index) {
+	var len = array_length(arr);
+	if (index < 0 or index >= len) return;
+	var temp_len = len - index;
+	var temp_arr = array_create(temp_len);
+	array_copy(temp_arr,0,arr,index,temp_len);
+	array_resize(arr,len - 1);
+	array_copy(arr,index,temp_arr,1,temp_len);
+}
+
+#endregion
+
 #region JSON
 
 /// @func json_file_get_string
