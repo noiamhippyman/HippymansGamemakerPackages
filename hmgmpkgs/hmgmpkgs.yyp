@@ -36,6 +36,7 @@
     {"id":{"name":"ColTest_LineORect","path":"scripts/ColTest_LineORect/ColTest_LineORect.yy",},"order":3,},
     {"id":{"name":"ColTest_LineCircle","path":"scripts/ColTest_LineCircle/ColTest_LineCircle.yy",},"order":0,},
     {"id":{"name":"Shapes","path":"scripts/Shapes/Shapes.yy",},"order":2,},
+    {"id":{"name":"SurfaceBuffer","path":"scripts/SurfaceBuffer/SurfaceBuffer.yy",},"order":11,},
     {"id":{"name":"Object5","path":"objects/Object5/Object5.yy",},"order":4,},
     {"id":{"name":"ColTest_PointInCircle","path":"scripts/ColTest_PointInCircle/ColTest_PointInCircle.yy",},"order":0,},
     {"id":{"name":"ColTest_SegmentSegment","path":"scripts/ColTest_SegmentSegment/ColTest_SegmentSegment.yy",},"order":4,},
