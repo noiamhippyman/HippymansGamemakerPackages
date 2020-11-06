@@ -1,7 +1,39 @@
+function Blackboard() constructor {
+	data = ds_map_create();
+	static set_var = function(name,value) {
+		data[? name ] = value;
+	}
+	
+	static get_var = function(name) {
+		return data[? name ];
+	}
+	
+	static var_exists = function(name) {
+		var val = get_var(name);
+		return !is_undefined(val);
+	}
+	
+	static erase_var = function(name) {
+		if (var_exists(name)) {
+			ds_map_delete(data,name);
+		}
+	}
+}
+
+function blackboard_create() {
+	return new Blackboard();
+}
+
+function blackboard_destroy(id) {
+	ds_map_destroy(id.data);
+	delete id;
+}
+
 /// @func StateMachine
 function StateMachine() constructor {
 	state_map = ds_map_create();
 	current = new State(this);
+	blackboard = blackboard_create();
 	
 	/// @func add
 	static add = function(state_name,state) { 
@@ -32,14 +64,9 @@ function StateMachine() constructor {
 		current.on_enter();
 	}
 	
-	/// @func update
-	static update = function(dt) {
-		current.update(dt);
-	}
-	
-	/// @func process_input
-	static process_input = function() {
-		current.process_input();
+	/// @func on_update
+	static on_update = function(dt) {
+		current.on_update(dt);
 	}
 }
 
@@ -52,5 +79,6 @@ function state_machine_create() {
 function state_machine_destroy(state_machine) {
 	state_machine.clear();
 	ds_map_destroy(state_machine.state_map);
+	blackboard_destroy(state_machine.blackboard);
 	delete state_machine;
 }

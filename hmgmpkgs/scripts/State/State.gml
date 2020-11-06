@@ -8,9 +8,10 @@ function State(state_machine_id) constructor {
 	/// @func on_exit
 	static on_exit = function() {};
 	
-	/// @func update
-	static update = function(dt) {};
-	
-	/// @func process_input
-	static process_input = function() {};
+	/// @func on_update
+	static on_update = function(dt) {};
+}
+
+function InstanceState(state_machine_id, instance_id) : State(state_machine_id) constructor {
+	instance = instance_id;
 }

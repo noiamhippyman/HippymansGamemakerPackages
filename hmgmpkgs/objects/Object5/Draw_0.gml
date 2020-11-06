@@ -1,1 +1,0 @@
-sb.draw(mouse_x,mouse_y);
