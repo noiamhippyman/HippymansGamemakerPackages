@@ -31,6 +31,7 @@ function blackboard_destroy(id) {
 
 /// @func StateMachine
 function StateMachine() constructor {
+	instance = argument_count > 0 ? argument[0] : noone;
 	state_map = ds_map_create();
 	current = new State(this);
 	blackboard = blackboard_create();

@@ -11,7 +11,3 @@ function State(state_machine_id) constructor {
 	/// @func on_update
 	static on_update = function(dt) {};
 }
-
-function InstanceState(state_machine_id, instance_id) : State(state_machine_id) constructor {
-	instance = instance_id;
-}
